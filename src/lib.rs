@@ -8,18 +8,18 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>>{
     Ok(())
 }
 
-pub struct Config {
-    pub query: String,
-    pub filename: String
+pub struct Config<'a> {
+    pub query: &'a String,
+    pub filename: &'a String
 }
 
-impl Config {
-    pub fn new(args: &[String]) -> Result<Config, &str> {
+impl Config<'_> {
+    pub fn new<'a>(args: &'a[String]) -> Result<Config, &str> {
         if args.len() < 3 {
             return Err("Not enough arguments");
         }
-        let query: String = args[1].clone();
-        let filename: String = args[2].clone();
-        Ok(Config {query,filename})
+        let query: &'a String = &args[1];
+        let filename: &'a String = &args[2];
+        Ok(Config {query: &query, filename: &filename})
     }
 }
