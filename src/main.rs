@@ -11,6 +11,7 @@ fn main() {
 
 	if let Err(e) = minigrep::is_valid_flags(&args) {
 		eprintln!("{}", e);
+		minigrep::print_flags();
 		process::exit(1);
 	}
 

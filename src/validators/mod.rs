@@ -15,6 +15,13 @@ pub fn is_valid_flags(args: &[String]) -> Result<(), String> {
 	Ok(())
 }
 
+pub fn print_flags() {
+	eprintln!("
+	Valid flags:
+	-i, --insenseitive\t\tCase insensitive flag
+	")
+}
+
 #[cfg(test)]
 
 mod tests {

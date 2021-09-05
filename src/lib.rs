@@ -4,7 +4,7 @@ pub mod engine;
 use std::fs;
 use std::error::Error;
 use std::env;
-pub use validators::is_valid_flags;
+pub use validators::{is_valid_flags, print_flags};
 
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>>{
