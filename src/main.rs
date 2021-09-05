@@ -8,6 +8,12 @@ fn main() {
         println!("Problem on parse arguments: {}", err);
         process::exit(1);
     });
+
+	if let Err(e) = minigrep::is_valid_flags(&args) {
+		println!("{}", e);
+		process::exit(1);
+	}
+
     println!("Searching {}", config.query);
     println!("In file {}", config.filename);
 
