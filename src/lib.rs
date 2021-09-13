@@ -51,7 +51,7 @@ impl Config {
 	fn is_case_insensitive(mut args: env::Args) -> bool {
 
 		if match args.next() {
-			Some(arg) => arg == "-i" || arg == "insensitive",
+			Some(arg) => arg == "-i" || arg == "--insensitive",
 			_ => false
 		} {
 			return true;

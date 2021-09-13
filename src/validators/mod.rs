@@ -20,6 +20,6 @@ pub fn is_valid_flags(args: Args) -> Result<(), String> {
 pub fn print_flags() {
 	eprintln!("
 	Valid flags:
-	-i, --insenseitive\t\tCase insensitive flag
+	-i, --insensitive\t\tCase insensitive flag
 	")
 }
