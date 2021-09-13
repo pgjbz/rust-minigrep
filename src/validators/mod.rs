@@ -1,8 +1,10 @@
+use std::env::Args;
+
 const VALID_FLAGS: [&str; 2] = ["-i", "--insensitive"];
 
-pub fn is_valid_flags(args: &[String]) -> Result<(), String> {
+pub fn is_valid_flags(args: Args) -> Result<(), String> {
 		
-	let flags: Vec<&String> = args.iter().filter(|arg| arg.starts_with("-")).collect();
+	let flags: Vec<String> = args.into_iter().filter(|arg| arg.starts_with("-")).collect();
 	let mut invalid_flags: Vec<String> = Vec::<String>::new();
 	for flag in flags {
 		if !VALID_FLAGS.contains(&&flag[..]) {
@@ -20,27 +22,4 @@ pub fn print_flags() {
 	Valid flags:
 	-i, --insenseitive\t\tCase insensitive flag
 	")
-}
-
-#[cfg(test)]
-
-mod tests {
-
-	use super::*;
-
-	#[test]
-	fn invalid_flag()  {
-		assert_eq!(
-			is_valid_flags(&["-b".to_string(), "-c".to_string()]).err(), 
-			Some("Invalid flags: -b, -c".to_string())
-		);
-	}
-
-	#[test]
-	fn valid_flag() {
-		assert_eq!(
-			is_valid_flags(&["-i".to_string()]).err(), 
-			None
-		);
-	}
 }
