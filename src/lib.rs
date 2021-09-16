@@ -22,6 +22,10 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>>{
     Ok(())
 }
 
+/// Config
+/// query: text to search in filename
+/// filename: filename to search text
+/// case_insenstive: ignore case
 pub struct Config {
     pub query: String,
     pub filename: String,
@@ -48,6 +52,8 @@ impl Config {
         Ok(Config { query, filename, case_insentitive })
     }
 
+	///
+	/// verify envirmonent variables or arg to check case insensitive
 	fn is_case_insensitive(mut args: env::Args) -> bool {
 
 		if match args.next() {

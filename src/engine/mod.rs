@@ -1,9 +1,19 @@
+/// search text case sensitive
+/// # Example
+/// search("to", "To me for you\nNot me is you");
+/// 
+/// result -> [];
 pub fn search<'a>(query: &str, content: &'a str) -> Vec<&'a str> {
 	content.lines()
 	.filter(|line| line.contains(query))
 	.collect()
 }
 
+/// search text in content case insenstive
+/// # Example
+/// search_case_insensitive("to", "To me for you\nNot me is you");
+/// 
+/// result -> ["To me for you"];
 pub fn search_case_insensitive<'a>(query: &str, content: &'a str) -> Vec<&'a str> {
 	content.lines()
 	.filter(|line| line.to_lowercase().contains(&query.to_lowercase()))

@@ -2,6 +2,8 @@ use std::env::Args;
 
 const VALID_FLAGS: [&str; 2] = ["-i", "--insensitive"];
 
+
+/// Valid flags in program args
 pub fn is_valid_flags(args: Args) -> Result<(), String> {
 		
 	let flags: Vec<String> = args.into_iter().filter(|arg| arg.starts_with("-")).collect();
@@ -17,6 +19,7 @@ pub fn is_valid_flags(args: Args) -> Result<(), String> {
 	Ok(())
 }
 
+/// print valid flages
 pub fn print_flags() {
 	eprintln!("
 	Valid flags:
